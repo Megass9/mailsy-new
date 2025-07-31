@@ -3,11 +3,14 @@ import './Login.css';
 
 const Login = () => {
   const handleShopierLogin = () => {
-    // Direkt Shopier'a yönlendir
-    const shopierAuthUrl = `https://www.shopier.com/oauth/authorize?client_id=df6029f3ac6253acab4685b26f5c9210&redirect_uri=https://mailsy-new.vercel.app/auth/callback&response_type=code&scope=read_orders`;
+    alert('Butona tıklandı!'); // Test için
     
-    console.log('Redirecting to:', shopierAuthUrl);
-    window.location.href = shopierAuthUrl;
+    const url = 'https://www.shopier.com/oauth/authorize?client_id=df6029f3ac6253acab4685b26f5c9210&redirect_uri=https://mailsy-new.vercel.app/auth/callback&response_type=code&scope=read_orders';
+    
+    console.log('URL:', url);
+    
+    // Yeni sekmede aç
+    window.open(url, '_blank');
   };
 
   return (
