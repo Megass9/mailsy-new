@@ -5,7 +5,7 @@ const Login = () => {
   const handleShopierLogin = () => {
     alert('Butona tıklandı!'); // Test için
     
-    const url = 'https://www.shopier.com/oauth/authorize?client_id=df6029f3ac6253acab4685b26f5c9210&redirect_uri=https://mailsy-new.vercel.app/auth/callback&response_type=code&scope=read_orders';
+    const url = 'https://www.shopier.com/oauth/authorize?client_id=d0ea2d8f7c960042e2bff93594e8fc37&redirect_uri=https://mailsy-new.vercel.app/auth/callback&response_type=code&scope=read_orders';
     
     console.log('URL:', url);
     
