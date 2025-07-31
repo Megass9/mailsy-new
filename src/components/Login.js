@@ -3,13 +3,10 @@ import './Login.css';
 
 const Login = () => {
   const handleShopierLogin = () => {
-    alert('Butona tıklandı!'); // Test için
+    const redirectUri = encodeURIComponent('https://mailsy-new.vercel.app/auth/callback');
+    const url = `https://www.shopier.com/oauth/authorize?client_id=d0ea2d8f7c960042e2bff93594e8fc37&redirect_uri=${redirectUri}&response_type=code&scope=read_orders`;
     
-    const url = 'https://www.shopier.com/oauth/authorize?client_id=d0ea2d8f7c960042e2bff93594e8fc37&redirect_uri=https://mailsy-new.vercel.app/auth/callback&response_type=code&scope=read_orders';
-    
-    console.log('URL:', url);
-    
-    // Yeni sekmede aç
+    console.log('Encoded URL:', url);
     window.open(url, '_blank');
   };
 
