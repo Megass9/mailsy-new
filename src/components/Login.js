@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [animationsStarted, setAnimationsStarted] = useState(false);
+
+  // Animasyonları başlat
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationsStarted(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleShopierLogin = () => {
     setIsLoading(true);
@@ -11,7 +21,6 @@ const Login = () => {
     
     console.log('Encoded URL:', url);
     
-    // Simulate loading for better UX
     setTimeout(() => {
       window.open(url, '_blank');
       setIsLoading(false);
@@ -120,7 +129,14 @@ const Login = () => {
 
           <div className="features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-item animate-slideInUp" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div 
+                key={index} 
+                className={`feature-item ${
+                  animationsStarted 
+                    ? `animate-in animate-delay-${index + 1}` 
+                    : 'will-animate'
+                }`}
+              >
                 <div className="feature-icon">
                   <span>{feature.icon}</span>
                 </div>

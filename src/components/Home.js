@@ -1,192 +1,244 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  const features = [
-    {
-      icon: '📧',
-      title: 'Otomatik E-posta Gönderimi',
-      description: 'Shopier siparişleriniz için otomatik olarak müşterilerinize e-posta gönderin.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: '⚡',
-      title: 'Hızlı Entegrasyon',
-      description: 'Shopier hesabınızla tek tıkla bağlanın ve hemen kullanmaya başlayın.',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: '📊',
-      title: 'Detaylı Raporlama',
-      description: 'Gönderilen e-postaları takip edin ve performans raporlarını görüntüleyin.',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: '🎨',
-      title: 'Özelleştirilebilir Şablonlar',
-      description: 'Markanıza uygun e-posta şablonları oluşturun ve düzenleyin.',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: '🔒',
-      title: 'Güvenli Bağlantı',
-      description: 'Verileriniz SSL şifreleme ile korunur ve güvenli bir şekilde işlenir.',
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      icon: '📱',
-      title: 'Mobil Uyumlu',
-      description: 'Tüm cihazlardan erişilebilir, responsive tasarım ile her yerde kullanın.',
-      color: 'from-teal-500 to-cyan-500'
-    }
-  ];
+  const [showDemoModal, setShowDemoModal] = useState(false);
 
-  const stats = [
-    { number: '10K+', label: 'Gönderilen E-posta', icon: '📧' },
-    { number: '500+', label: 'Mutlu Müşteri', icon: '😊' },
-    { number: '99.9%', label: 'Uptime Garantisi', icon: '⚡' },
-    { number: '24/7', label: 'Destek', icon: '🛟' }
-  ];
+  const handleWatchDemo = () => {
+    setShowDemoModal(true);
+  };
+
+  const closeDemoModal = () => {
+    setShowDemoModal(false);
+  };
 
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-container">
-          <div className="hero-content animate-slideInUp">
-            <div className="hero-badge">
-              <span className="badge-text">🚀 Yeni Özellik</span>
-              <span className="badge-highlight">AI destekli e-posta şablonları</span>
+    <div className='home'>
+      <section className='hero'>
+        <div className='hero-container'>
+          <div className='hero-content'>
+            <div className='hero-badge'>
+              <span className='badge-text'>✨ Yeni Özellik:</span>
+              <span className='badge-highlight'>AI destekli e-posta şablonları</span>
             </div>
             
-            <h1 className="hero-title">
-              Shopier Siparişleriniz İçin
-              <span className="gradient-text"> Otomatik E-posta </span>
-              Çözümü
+            <h1 className='hero-title'>
+              Shopier <br />
+              Siparişleriniz İçin <br />
+              <span className='gradient-text'>Otomatik E-posta Çözümü</span>
             </h1>
             
-            <p className="hero-description">
-              Mailsy ile Shopier mağazanızdan gelen siparişler için otomatik e-posta gönderimi yapın. 
-              Müşteri memnuniyetini artırın, satışlarınızı büyütün.
+            <p className='hero-description'>
+              Mailsy ile Shopier mağazanızdan gelen siparişler için 
+              otomatik e-posta gönderimi yapın. Müşteri 
+              memnuniyetini artırın, satışlarınızı büyütün.
             </p>
             
-            <div className="hero-buttons">
-              <Link to="/login" className="btn btn-primary btn-lg hero-cta">
+            <div className='hero-buttons'>
+              <Link to='/login' className='hero-cta'>
                 <span>Hemen Başla</span>
-                <svg className="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                <span className='btn-icon'>→</span>
               </Link>
-              
-              <button className="btn btn-secondary btn-lg demo-btn">
-                <svg className="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+              <button onClick={handleWatchDemo} className='demo-btn'>
+                <span className='btn-icon'>▶</span>
                 <span>Demo İzle</span>
               </button>
             </div>
             
-            <div className="hero-stats">
-              {stats.map((stat, index) => (
-                <div key={index} className="stat-item">
-                  <div className="stat-icon">{stat.icon}</div>
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
-              ))}
+            <div className='hero-stats'>
+              <div className='stat-item'>
+                <span className='stat-icon'>📧</span>
+                <div className='stat-number'>10K+</div>
+                <div className='stat-label'>Gönderilen E-posta</div>
+              </div>
+              <div className='stat-item'>
+                <span className='stat-icon'>😊</span>
+                <div className='stat-number'>500+</div>
+                <div className='stat-label'>Mutlu Müşteri</div>
+              </div>
+              <div className='stat-item'>
+                <span className='stat-icon'>⚡</span>
+                <div className='stat-number'>99.9%</div>
+                <div className='stat-label'>Uptime Garantisi</div>
+              </div>
+              <div className='stat-item'>
+                <span className='stat-icon'>🔧</span>
+                <div className='stat-number'>24/7</div>
+                <div className='stat-label'>Destek</div>
+              </div>
             </div>
           </div>
           
-          <div className="hero-visual">
-            <div className="visual-container">
-              <div className="floating-card card-1">
-                <div className="card-header">
-                  <div className="card-avatar">📧</div>
-                  <div>
-                    <div className="card-title">Sipariş Onayı</div>
-                    <div className="card-subtitle">Otomatik gönderildi</div>
+          <div className='hero-visual'>
+            <div className='visual-container'>
+              <div className='main-card'>
+                <div className='card-header'>
+                  <div className='card-avatar'>S</div>
+                  <div className='card-info'>
+                    <h3>Sipariş Onayı</h3>
+                    <p>Yeni gönderilecek</p>
                   </div>
                 </div>
-                <div className="card-status success">✓ Teslim edildi</div>
-              </div>
-              
-              <div className="floating-card card-2">
-                <div className="card-header">
-                  <div className="card-avatar">🛍️</div>
-                  <div>
-                    <div className="card-title">Kargo Bildirimi</div>
-                    <div className="card-subtitle">2 dakika önce</div>
+                
+                <div className='card-content'>
+                  <div className='card-title'>⭐ Değerlendirme</div>
+                  <div className='card-description'>
+                    Yeni gönderilecek e-posta şablonu
                   </div>
                 </div>
-                <div className="card-status pending">⏳ Gönderiliyor</div>
-              </div>
-              
-              <div className="floating-card card-3">
-                <div className="card-header">
-                  <div className="card-avatar">⭐</div>
-                  <div>
-                    <div className="card-title">Değerlendirme</div>
-                    <div className="card-subtitle">Yarın gönderilecek</div>
-                  </div>
+                
+                <div className='card-status'>
+                  <div className='status-icon'></div>
+                  <span>Planlandı</span>
                 </div>
-                <div className="card-status scheduled">📅 Planlandı</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="features">
-        <div className="features-container">
-          <div className="section-header">
-            <h2 className="section-title">
-              Neden <span className="gradient-text">Mailsy</span>?
-            </h2>
-            <p className="section-description">
-              E-ticaret işletmenizi bir üst seviyeye taşıyacak güçlü özellikler
+      <section className='features'>
+        <div className='features-container'>
+          <div className='section-header'>
+            <h2 className='section-title'>Neden Mailsy?</h2>
+            <p className='section-description'>
+              E-ticaret işletmeniz için özel olarak tasarlanmış güçlü özellikler
             </p>
           </div>
           
-          <div className="features-grid">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-card animate-slideInUp" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className={`feature-icon bg-gradient-to-r ${feature.color}`}>
-                  <span>{feature.icon}</span>
-                </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
-                <div className="feature-arrow">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+          <div className='features-grid'>
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>🚀</span>
               </div>
-            ))}
+              <h3 className='feature-title'>Otomatik Gönderim</h3>
+              <p className='feature-description'>
+                Shopier&apos;dan gelen siparişler için otomatik olarak e-posta gönderimi yapın. 
+                Manuel işlem gerektirmez.
+              </p>
+            </div>
+            
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>🎨</span>
+              </div>
+              <h3 className='feature-title'>Özelleştirilebilir Şablonlar</h3>
+              <p className='feature-description'>
+                Markanıza uygun, profesyonel e-posta şablonları oluşturun. 
+                Drag & drop editör ile kolayca düzenleyin.
+              </p>
+            </div>
+            
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>📊</span>
+              </div>
+              <h3 className='feature-title'>Detaylı Analitik</h3>
+              <p className='feature-description'>
+                E-posta açılma oranları, tıklama istatistikleri ve müşteri 
+                etkileşimlerini takip edin.
+              </p>
+            </div>
+            
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>🔒</span>
+              </div>
+              <h3 className='feature-title'>Güvenli & Hızlı</h3>
+              <p className='feature-description'>
+                SSL şifreleme ile güvenli veri transferi. Yüksek performanslı 
+                sunucular ile hızlı e-posta gönderimi.
+              </p>
+            </div>
+            
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>🔧</span>
+              </div>
+              <h3 className='feature-title'>Kolay Entegrasyon</h3>
+              <p className='feature-description'>
+                Shopier hesabınızı tek tıkla bağlayın. Karmaşık kurulum 
+                gerektirmez, hemen kullanmaya başlayın.
+              </p>
+            </div>
+            
+            <div className='feature-card'>
+              <div className='feature-icon'>
+                <span>💬</span>
+              </div>
+              <h3 className='feature-title'>7/24 Destek</h3>
+              <p className='feature-description'>
+                Uzman destek ekibimiz her zaman yanınızda. Canlı chat, 
+                e-posta ve telefon desteği.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-container">
-          <div className="cta-content">
-            <h2 className="cta-title">
-              Hemen başlayın ve müşteri memnuniyetinizi artırın
+      <section className='cta-section'>
+        <div className='cta-container'>
+          <div className='cta-content'>
+            <h2 className='cta-title'>
+              Hemen Başlayın
             </h2>
-            <p className="cta-description">
-              Shopier mağazanız için profesyonel e-posta otomasyonu kurmanız sadece birkaç dakika sürer.
+            <p className='cta-description'>
+              Shopier mağazanız için otomatik e-posta gönderimini bugün başlatın. 
+              Ücretsiz deneme ile tüm özellikleri keşfedin.
             </p>
-            <Link to="/login" className="btn btn-primary btn-lg cta-button">
-              <span>Ücretsiz Dene</span>
-              <svg className="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+            <Link to='/login' className='cta-button'>
+              <span>Ücretsiz Başla</span>
+              <span className='btn-icon'>→</span>
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Demo Modal */}
+      {showDemoModal && (
+        <div className="demo-modal-overlay" onClick={closeDemoModal}>
+          <div className="demo-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="demo-modal-header">
+              <h3>📹 Mailsy Demo Video</h3>
+              <button className="close-btn" onClick={closeDemoModal}>×</button>
+            </div>
+            <div className="demo-modal-content">
+              <div className="demo-video-placeholder">
+                <div className="video-icon">🎬</div>
+                <h4>Demo Video Yakında!</h4>
+                <p>Mailsy&apos;nin tüm özelliklerini gösteren demo videomuz hazırlanıyor.</p>
+                <div className="demo-features">
+                  <div className="demo-feature">
+                    <span className="feature-check">✅</span>
+                    <span>Shopier entegrasyonu</span>
+                  </div>
+                  <div className="demo-feature">
+                    <span className="feature-check">✅</span>
+                    <span>Otomatik e-posta gönderimi</span>
+                  </div>
+                  <div className="demo-feature">
+                    <span className="feature-check">✅</span>
+                    <span>Şablon özelleştirme</span>
+                  </div>
+                  <div className="demo-feature">
+                    <span className="feature-check">✅</span>
+                    <span>Analitik dashboard</span>
+                  </div>
+                </div>
+                <div className="demo-actions">
+                  <Link to="/login" className="demo-cta" onClick={closeDemoModal}>
+                    Hemen Başla
+                  </Link>
+                  <button onClick={closeDemoModal} className="demo-close">
+                    Kapat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

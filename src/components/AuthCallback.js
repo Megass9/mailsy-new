@@ -12,11 +12,11 @@ const AuthCallback = () => {
   useEffect(() => {
     const handleCallback = async () => {
       const code = searchParams.get('code');
-      const error = searchParams.get('error');
+      const errorParam = searchParams.get('error');
 
-      if (error) {
+      if (errorParam) {
         setStatus('error');
-        setError(`OAuth Error: ${error}`);
+        setError(`OAuth Error: ${errorParam}`);
         return;
       }
 
@@ -27,7 +27,6 @@ const AuthCallback = () => {
       }
 
       try {
-        // Shopier'ın örnek koduna göre token exchange
         const tokenUrl = 'https://api.shopier.com/v1/oauth2/token';
         
         const postData = {
@@ -46,7 +45,6 @@ const AuthCallback = () => {
 
         const { access_token, refresh_token, token_type, expires_in } = response.data;
 
-        // Token'ları localStorage'a kaydet
         localStorage.setItem('shopier_access_token', access_token);
         localStorage.setItem('shopier_refresh_token', refresh_token);
         localStorage.setItem('shopier_token_type', token_type);
@@ -54,7 +52,6 @@ const AuthCallback = () => {
 
         setStatus('success');
         
-        // Dashboard'a yönlendir
         setTimeout(() => {
           navigate('/dashboard');
         }, 2000);
